@@ -1,0 +1,11 @@
+.field { display: grid; gap: 6px; }
+.label { font-size: 13px; color: #b7c0d0; }
+.input {
+  padding: 10px 12px; border-radius: 10px; outline: none;
+  border: 1px solid #2b3a4b; background: #0e1220; color: #eaf0f6;
+}
+.textarea {
+  padding: 10px 12px; border-radius: 10px; outline: none;
+  border: 1px solid #2b3a4b; background: #0e1220; color: #eaf0f6;
+  min-height: 180px; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
