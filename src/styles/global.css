@@ -14,7 +14,7 @@ body { background: #0a0c12; color: #e9eef7; }
 /* wrapper che occupa tutto lo spazio sotto la toolbar */
 .page {
   min-height: 100dvh;
-  padding-top: 400px; 
+  padding-top: var(--navbar-h); 
   padding-left: clamp(12px, 2vw, 24px);
   padding-right: clamp(12px, 2vw, 24px);      
 }

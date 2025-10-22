@@ -51,15 +51,17 @@ export default function AdminEventsPage() {
     setEditingEvent(null);
   };
 
-  const handleSaveEvent = async (payload: Omit<EventItem, "id">, id?: number) => {
-    console.log("Saving event", { payload });
-    if (id) {
-      await apiPUT<EventItem>(ENDPOINTS.admin.updateEvent(id), payload);
-    } else {
-      await apiPOST<EventItem>(ENDPOINTS.admin.createEvent, payload);
-    }
-    await loadAll();
-  };
+const handleSaveEvent = async (payload: Omit<EventItem, "id">, id?: number) => {
+  console.log("Saving event", { payload });
+
+  if (id) {
+    await apiPUT<EventItem>(ENDPOINTS.admin.updateEvent(id), payload);
+  } else {
+    await apiPOST<EventItem>(ENDPOINTS.admin.createEvent, payload);
+  }
+
+  loadAll().catch(console.error);
+};
 
   const handleSendEmail = async (eventId: number, html: string) => {
     await apiPOSTNoContent(ENDPOINTS.email(eventId), { html });

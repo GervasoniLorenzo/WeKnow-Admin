@@ -6,6 +6,8 @@ export type EventItem = {
   date: string;
   location: string;
   artists: Artist[];
+  slug?: string;
+  imageUuid?: string | null;
 };
 
 export type EventDto = {
@@ -13,8 +15,7 @@ export type EventDto = {
   location: string;
   date: string | null;
   artistsIds: number[];
+  imageUuid?: string | null;
 };
 
-export type UpdateEventDto = EventDto & {
-  id: number;
-};
+export type UpdateEventDto = EventDto & { id: number };

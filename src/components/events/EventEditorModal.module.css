@@ -145,3 +145,192 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* === Image box a destra === */
+.topRow {
+  display: grid;
+  grid-template-columns: 1fr 260px;
+  gap: 16px;
+  align-items: start;
+}
+
+.leftCol {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.rightCol {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.imageLabel {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 2px;
+}
+
+.imageDrop {
+  width: 240px;
+  height: 240px;
+  border: 1px dashed rgba(255, 255, 255, 0.18);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.02);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden; /* evita fuoriuscite */
+  position: relative; /* per overlay pennina */
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.imageDrop:hover {
+  border-color: rgba(255, 255, 255, 0.28);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.dragOver {
+  border-color: rgba(59, 130, 246, 0.6);
+  background: rgba(59, 130, 246, 0.08);
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+} /* NESSUNO STRETCH/CROP */
+
+.dropHint {
+  text-align: center;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.6);
+}
+.dropIcon {
+  font-size: 28px;
+  margin-bottom: 6px;
+}
+.dropAction {
+  text-decoration: underline;
+}
+
+.editOverlay {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  border-radius: 999px;
+  padding: 6px 8px;
+  background: rgba(0, 0, 0, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  pointer-events: none; /* il click passa alla drop-area */
+}
+
+.imageNote {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+/* footer button spacing in modal body */
+.footerRow {
+  margin-top: 8px;
+}
+
+/* Responsive: stack su schermi piccoli */
+@media (max-width: 720px) {
+  .topRow {
+    grid-template-columns: 1fr;
+  }
+  .imageDrop {
+    width: 100%;
+    height: 220px;
+  }
+}
+
+.artistGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.artistPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.artistName {
+  font-size: 13px;
+  line-height: 1;
+}
+
+/* ===== "x" minimal con cerchietto fine al hover ===== */
+.iconRemove {
+  position: relative;
+  width: 18px;
+  height: 18px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.8);
+  cursor: pointer;
+  line-height: 18px;
+  text-align: center;
+  border-radius: 999px; /* per il ring al focus/hover */
+  transition: color 0.15s ease;
+}
+
+.iconRemove > span {
+  display: block;
+  font-size: 14px;
+  transform: translateY(-1px); /* centra otticamente la × */
+}
+
+/* cerchietto sottile che appare in hover/focus, poco più grande della "x" */
+.iconRemove::after {
+  content: "";
+  position: absolute;
+  inset: -4px; /* rende il cerchietto leggermente più grande della x */
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 0.15s ease, transform 0.15s ease, border-color 0.15s ease;
+}
+
+.iconRemove:hover {
+  color: #fff;
+}
+.iconRemove:hover::after {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* accessibilità: mostra ring anche con tastiera */
+.iconRemove:focus-visible {
+  outline: none;
+}
+.iconRemove:focus-visible::after {
+  opacity: 1;
+  transform: scale(1);
+  border-color: rgba(90, 160, 255, 0.85);
+}
+
+/* Add artist row */
+.addArtistRow {
+  margin-top: 6px;
+}
+
+.artistSelect {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #fff;
+  padding: 8px 10px;
+  border-radius: 8px;
+}

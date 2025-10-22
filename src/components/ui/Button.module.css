@@ -71,3 +71,29 @@
   background: rgba(255,255,255,0.08);
   border-color: rgba(255,255,255,0.6);
 }
+
+/* loading state */
+.isLoading {
+  pointer-events: none;
+}
+
+/* keep text aligned whether spinner shows or not */
+.label {
+  display: inline-flex;
+  align-items: center;
+}
+
+/* simple, theme-agnostic spinner */
+.spinner {
+  width: 16px;
+  height: 16px;
+  border-radius: 999px;
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  border-top-color: currentColor;
+  animation: btnspin 1s linear infinite;
+  margin-right: 8px;
+}
+
+@keyframes btnspin {
+  to { transform: rotate(360deg); }
+}

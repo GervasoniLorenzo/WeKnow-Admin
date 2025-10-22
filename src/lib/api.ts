@@ -105,3 +105,28 @@ export const apiPOSTNoContent = (path: string, body?: unknown, timeoutMs?: numbe
   request<void>("POST", path, body, timeoutMs);
 export const apiPUTNoContent = (path: string, body?: unknown, timeoutMs?: number) =>
   request<void>("PUT", path, body, timeoutMs);
+export async function apiUPLOAD<T>(path: string, form: FormData, timeoutMs: number = 12_000): Promise<T> {
+  const url = (function joinUrl(base: string, p: string) {
+    if (/^https?:\/\//i.test(p)) return p;
+    if (!base) return p;
+    if (base.endsWith("/") && p.startsWith("/")) return base + p.slice(1);
+    if (!base.endsWith("/") && !p.startsWith("/")) return `${base}/${p}`;
+    return base + p;
+  })((import.meta as any).env?.VITE_API_URL || (globalThis as any)?.process?.env?.VITE_API_URL || "/api", path);
+
+  const ctrl = new AbortController();
+  const t = setTimeout(() => ctrl.abort(), timeoutMs);
+  try {
+    const res = await fetch(url, { method: "POST", credentials: "include", signal: ctrl.signal, body: form });
+    if (!res.ok) {
+      let message = `HTTP ${res.status} ${res.statusText}`;
+      try { const j = await res.json(); if (j?.message) message = j.message; } catch {}
+      throw new Error(message);
+    }
+    const ct = res.headers.get("content-type") || "";
+    if (ct.includes("application/json")) return (await res.json()) as T;
+    return (await res.text()) as any as T;
+  } finally {
+    clearTimeout(t);
+  }
+}
