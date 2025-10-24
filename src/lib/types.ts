@@ -25,3 +25,31 @@ export type ArtistDto = {
 };
 
 export type UpdateArtistDto = ArtistDto & { id: number };
+
+export type ReleaseLink = {
+  platform: string;
+  url: string;
+};
+
+export type ReleaseItem = {
+  id: number;
+  slug: string;
+  title: string;
+  releaseDate: string; // ISO date
+  label: string;
+  artists: Artist[];
+  imageId?: number | null;
+  imageUrl?: string | null; // opzionale se il BE la fornisce
+  links: ReleaseLink[];
+};
+
+export type ReleaseDto = {
+  title: string;
+  releaseDate: string | null; // ISO o null
+  label: string;
+  artistsIds: number[];
+  imageId?: number | null;
+  links: ReleaseLink[];
+};
+
+export type UpdateReleaseDto = ReleaseDto & { id: number };
