@@ -10,6 +10,8 @@ export default function AdminTopBar({}: {}) {
       </div>
       <nav className={styles.nav}>
         <Link to="/events" className={styles.link}>Eventi</Link>
+        <Link to="/artists" className={styles.link}>Artisti</Link>
+
         {/* aggiungi altri link se ti servono */}
       </nav>
     </header>

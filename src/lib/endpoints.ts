@@ -10,5 +10,9 @@ export const ENDPOINTS = {
     createEvent: "/admin/event",
     updateEvent: (id: number) => `/admin/event/${id}`,
     deleteEvent: (id: number) => `/admin/event/${id}`,
+    createArtist: "/admin/artist",
+    updateArtist: (id: number) => `/admin/artist/${id}`,
+    deleteArtist: (id: number) => `/admin/artist/${id}`,
+
   },
 };

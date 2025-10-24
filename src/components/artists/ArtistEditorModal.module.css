@@ -1,0 +1,10 @@
+.form { display: flex; flex-direction: column; gap: 16px; }
+.error {
+  padding: 8px 10px;
+  border-radius: 8px;
+  background: rgba(255, 71, 87, 0.12);
+  border: 1px solid rgba(255, 71, 87, 0.35);
+  color: #ffadb4;
+  font-size: 13px;
+}
+.footer { margin-top: 8px; display: flex; justify-content: flex-end; }

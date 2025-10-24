@@ -1,0 +1,86 @@
+.centerWrap {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.table {
+  width: 100%;
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.header {
+  background: rgba(255,255,255,0.04);
+  font-weight: 600;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 160px;
+  align-items: center;
+  padding: 10px 12px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+.row:first-child {
+  border-top: none;
+}
+
+.cell {
+  min-width: 0;
+}
+
+.cellName {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cellActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.empty {
+  padding: 16px;
+  text-align: center;
+  color: rgba(255,255,255,0.7);
+}
+
+/* Icon buttons coerenti con il tema admin */
+.iconBtn,
+.iconBtnDanger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.16);
+  background: rgba(255,255,255,0.04);
+  cursor: pointer;
+  transition: background .15s ease, border-color .15s ease, transform .04s ease;
+}
+
+.iconBtn:hover {
+  background: rgba(255,255,255,0.07);
+  border-color: rgba(255,255,255,0.26);
+}
+
+.iconBtnDanger {
+  color: #ff8686;
+  border-color: rgba(255,134,134,0.35);
+  background: rgba(255,134,134,0.06);
+}
+
+.iconBtnDanger:hover {
+  background: rgba(255,134,134,0.12);
+  border-color: rgba(255,134,134,0.55);
+}
+
+.iconBtn:active,
+.iconBtnDanger:active {
+  transform: scale(0.98);
+}

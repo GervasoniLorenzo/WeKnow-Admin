@@ -1,5 +1,3 @@
-export type Artist = { id: number; name: string; slug: string };
-
 export type EventItem = {
   id: number;
   name: string;
@@ -19,3 +17,11 @@ export type EventDto = {
 };
 
 export type UpdateEventDto = EventDto & { id: number };
+
+export type Artist = { id: number; name: string; slug: string };
+
+export type ArtistDto = {
+  name: string;
+};
+
+export type UpdateArtistDto = ArtistDto & { id: number };
